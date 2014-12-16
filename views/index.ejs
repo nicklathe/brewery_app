@@ -1,0 +1,36 @@
+
+<% include header %>
+
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+		<div id='map'></div>
+
+		<script>
+		var mapData = <%- mapData %>;
+		var breweryArray = mapData.data;
+		console.log(breweryArray);
+		L.mapbox.accessToken = 'pk.eyJ1Ijoibmlja2xhdGhlIiwiYSI6InhteXZpY1kifQ.7auBYdWGL5ttVM1kbrn93Q';
+		// L.mapbox.accessToken = process.env.map_token;
+
+		var map = L.mapbox.map('map', 'nicklathe.506fa65a', {
+			scrollWheelZoom: false
+			})
+
+		for(var i = 0; i < breweryArray.length; i++){
+			console.log(breweryArray[i].brewery.name);
+
+		 L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
+	    .bindPopup(breweryArray[i].brewery.name + "<br>"
+	    	+ "<button class='submit'>Add to List</button>")
+	    .addTo(map);
+
+		};
+
+		</script>
+	</div>
+</div>
+
+
+
+</body>
+</html>
