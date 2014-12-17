@@ -95,4 +95,14 @@ img {
 	position: left;
 }
 
+#list-outer {
+	padding-bottom: 100px;
+}
 
+.map-btn {
+	width: 200px;
+	border-radius: 0;
+	background-color: #000;
+	color: #fff;
+	border: none;
+}
