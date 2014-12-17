@@ -1,0 +1,25 @@
+<% include header %>
+
+<div class="col-md-12 col-sm-12">
+	<ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li class="active">My Breweries</li>
+	</ol>
+</div>
+
+<div class="col-md-4 col-sm-4 col-md-offset-4 col-md-offset-4">
+	<h1><%= user.name %>'s Favorite Breweries</h1>
+
+<% for(var i = 0; i < returnedList.length; i++) { %>
+
+	<h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> - <%= returnedList[i].brewery_name %></h4>
+
+
+<% } %>
+
+</div>
+
+<% include footer %>
+
+<!-- </body>
+</html> -->

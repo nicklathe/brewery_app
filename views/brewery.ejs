@@ -1,0 +1,27 @@
+<% include header %>
+
+<div class="col-md-12 col-sm-12">
+	<ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li class="active"><%= breweryIndiv.data[0].name %></li>
+	</ol>
+</div>
+
+<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+
+<img src="<%= breweryIndiv.data[0].images.medium %>">
+	<h3><%= breweryIndiv.data[0].name %></h3>
+	<br>
+	<p><%= breweryIndiv.data[0].description %></p>
+	<br>
+<!-- 	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+	<br> -->
+	<a href="<%= breweryIndiv.data[0].website %>">Website</a>
+
+</div>
+
+
+<% include footer %>
+
+<!-- </body>
+</html> -->
