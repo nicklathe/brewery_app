@@ -7,15 +7,15 @@
 	</ol>
 </div>
 
-<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+<div id="list-outer"class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 
 <img src="<%= breweryIndiv.data[0].images.medium %>">
 	<h3><%= breweryIndiv.data[0].name %></h3>
 	<br>
 	<p><%= breweryIndiv.data[0].description %></p>
 	<br>
-<!-- 	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-	<br> -->
+	<p>Established: <%= breweryIndiv.data[0].established %></p>
+	<br>
 	<a href="<%= breweryIndiv.data[0].website %>">Website</a>
 
 </div>
