@@ -6,16 +6,6 @@
 
 
 <div class="row">
-	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-		<div class="text-center">
-			<h1>Start drinking beer</h1>
-		</div>
-		<div class="main-text">
-			<p>Brewpub infusion secondary fermentation fermentation squares, keg craft beer balthazar. cask conditioning carbonation dry stout bittering hops abbey amber, barleywine! sparge mouthfeel finishing hops terminal gravity scotch ale. hard cider alpha acid primary fermentation bitter. krug mead grainy bung shelf life.</p>
-
-			<p>Double bock/dopplebock bung acid rest primary fermentation yeast bacterial, " sparge mead cask conditioned ale." krug imperial, trappist hoppy dry hopping oxidized. top-fermenting yeast infusion chocolate malt. brewpub ipa infusion specific gravity, mead pitching shelf life. barleywine pitch infusion; noble hops." bottom fermenting yeast sparge caramel malt. bunghole bitter aroma hops abbey barley. original gravity draft (draught) ester gravity copper, racking barrel hops trappist hoppy mouthfeel krug; mouthfeel.</p>
-		</div>
-	</div>
 	<div class="fp-bumper"></div>
 	<div id="map-outer"class="col-md-12 col-sm-12">
 		<div id='map'></div>
@@ -23,16 +13,20 @@
 		<script>
 		var mapData = <%- mapData %>;
 		var breweryArray = mapData.data;
-		console.log(breweryArray);
+		// console.log(breweryArray);
 		L.mapbox.accessToken = 'pk.eyJ1Ijoibmlja2xhdGhlIiwiYSI6InhteXZpY1kifQ.7auBYdWGL5ttVM1kbrn93Q';
 		// L.mapbox.accessToken = process.env.map_token;
+		var map,
+			dir;
 
 		var map = L.mapbox.map('map', 'nicklathe.506fa65a', {
 			scrollWheelZoom: false
 			})
 
+		dir = MQ.routing.directions();
+
 		for(var i = 0; i < breweryArray.length; i++){
-			console.log(breweryArray[i].brewery.name);
+			// console.log(breweryArray[i].brewery.name);
 
 		 L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
 	    .bindPopup(breweryArray[i].brewery.name + "<br>"
@@ -59,7 +53,3 @@
 </div>
 
 <% include footer %>
-
-<!-- 
-</body>
-</html> -->

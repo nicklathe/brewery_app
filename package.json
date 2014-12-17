@@ -17,12 +17,17 @@
   },
   "homepage": "https://github.com/nicklathe/brewery_app",
   "dependencies": {
+    "bcrypt": "^0.8.0",
     "body-parser": "^1.10.0",
     "brewerydb-node": "0.0.1",
+    "connect-flash": "^0.1.1",
     "ejs": "^1.0.0",
     "express": "^4.10.5",
     "express-session": "^1.9.3",
     "geocoder": "^0.2.2",
-    "request": "^2.51.0"
+    "pg": "^4.1.1",
+    "request": "^2.51.0",
+    "sequelize": "^2.0.0-rc3",
+    "sequelize-cli": "^0.3.3"
   }
 }

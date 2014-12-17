@@ -1,0 +1,34 @@
+<% include header %>
+
+<% include alerts %>
+
+<div id="login-outer" class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
+	<br><br>
+	<h2>Login</h2>
+	<form class="form" method="post" action="/login">
+		<input type="text" class="form-control" name="email" placeholder="Enter Your Email">
+		<br><br>
+		<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+		<br><br>
+		<input type="submit" value="Login" class="btn btn-primary">
+	</form>
+	<br><br>
+	<h2>Sign Up</h2>
+		<form class="form" method="post" action="/signup">
+		<input type="text" class="form-control" name="name" placeholder="Enter Your Name">
+		<br><br>
+		<input type="text" class="form-control" name="email" placeholder="Enter Your Email">
+		<br><br>
+		<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
+		<br><br>
+		<input type="password" class="form-control" name="password2" placeholder="Re-Enter Your Password">
+		<br><br>
+		<input type="submit" value="Sign-Up" class="btn btn-primary">
+		<br><br>
+	</form>
+</div>
+
+<% include footer %>
+
+<!-- </body>
+</html> -->
