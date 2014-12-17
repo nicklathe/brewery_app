@@ -3,55 +3,118 @@
 
 <% include alerts %>
 
-
-
 <div class="row">
 	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 		<div class="text-center">
-			<h1>Start drinking beer</h1>
+			<h2>Find Your Favorite Brewery</h2>
 		</div>
 		<div class="main-text">
-			<p>Brewpub infusion secondary fermentation fermentation squares, keg craft beer balthazar. cask conditioning carbonation dry stout bittering hops abbey amber, barleywine! sparge mouthfeel finishing hops terminal gravity scotch ale. hard cider alpha acid primary fermentation bitter. krug mead grainy bung shelf life.</p>
+			<p>Seattle has a long been in the buisiness of brewing beer. Spanning from the early days of the Rainier Brewery which started in the early 1880's, through the 1980's when the micro brewing scene kicked off, to the current day, with over 40 breweries located within the city of Seattle. Lucky for you, there is no sign of slowing down. That means for Seattleites, there is are endless options when it comes to finding a great brewery nearby.</p>
 
-			<p>Double bock/dopplebock bung acid rest primary fermentation yeast bacterial, " sparge mead cask conditioned ale." krug imperial, trappist hoppy dry hopping oxidized. top-fermenting yeast infusion chocolate malt. brewpub ipa infusion specific gravity, mead pitching shelf life. barleywine pitch infusion; noble hops." bottom fermenting yeast sparge caramel malt. bunghole bitter aroma hops abbey barley. original gravity draft (draught) ester gravity copper, racking barrel hops trappist hoppy mouthfeel krug; mouthfeel.</p>
+			<p>This app allows you to narrow down your search, get some info on a selected brewery, and save your favorite breweries to you a list so you can remember where you had that fantastic IPA you had one too many of the other night.</p>
 		</div>
 	</div>
 	<div class="fp-bumper"></div>
+	<div id="button-row"class="col-md-12 col-sm-12 text-center">
+		<div class="btn-group" role="group" aria-label="blank">
+		  	<button id="micro" type="button" class="map-btn btn btn-default">Show Micro Breweries</button>
+		  	<button id="nano" type="button" class="map-btn btn btn-default">Show Nano Breweries</button>
+		  	<button id="brewpub" type="button" class="map-btn btn btn-default">Show Brew Pubs</button>
+		  	<button id="all" type="button" class="map-btn btn btn-default">Show All Locations</button>	
+		</div>	
+	</div>
+
 	<div id="map-outer"class="col-md-12 col-sm-12">
+
 		<div id='map'></div>
 
 		<script>
 		var mapData = <%- mapData %>;
 		var breweryArray = mapData.data;
-		console.log(breweryArray);
 		L.mapbox.accessToken = 'pk.eyJ1Ijoibmlja2xhdGhlIiwiYSI6InhteXZpY1kifQ.7auBYdWGL5ttVM1kbrn93Q';
 		// L.mapbox.accessToken = process.env.map_token;
 
 		var map = L.mapbox.map('map', 'nicklathe.506fa65a', {
 			scrollWheelZoom: false
-			})
+		});
 
-		for(var i = 0; i < breweryArray.length; i++){
-			console.log(breweryArray[i].brewery.name);
+		$(function(){
+			$(".btn").on("click", function(){
 
-		 L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
-	    .bindPopup(breweryArray[i].brewery.name + "<br>"
-	    	+ "<form method='post' action='/list'>" 
-	    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
-	    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
-	    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
-	    	+ "</form>"
-	    	+ "<br>"
-	    	// + "<form method='post' action='/brewery'>"
-	    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
-	    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
-	    	// + "</form>"
-	    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
-	    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
-	    	+ "</a>")
+				removeBrewery();
 
-	    .addTo(map);
+				if(this.id === "micro"){
+					displayBrewery("micro");
+					return;
+				} else if(this.id === "nano"){
+					displayBrewery("nano");
+					return;
+				} else if(this.id === "brewpub"){
+					displayBrewery("brewpub");
+					return;
+				} else if(this.id === "all"){
+					displayAll();
+				}
+			});
+		});
 
+		// Global variable set for new layer
+		var markers = new L.FeatureGroup();
+
+
+		// Displays breweries filtered
+		function displayBrewery(pubType){
+			for(var i = 0; i < breweryArray.length; i++){
+				if(breweryArray[i].locationType === pubType){
+
+					var marker = L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
+				    .bindPopup(breweryArray[i].brewery.name + "<br>"
+				    	+ "<form method='post' action='/list'>" 
+				    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
+				    	+ "<input type='hidden' name='brewery_id' value='" + breweryArray[i].brewery.id + "'>"
+				    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
+				    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
+				    	+ "</form>"
+				    	+ "<br>"
+				    	// + "<form method='post' action='/brewery'>"
+				    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
+				    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
+				    	// + "</form>"
+				    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
+				    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
+				    	+ "</a>")
+				    markers.addLayer(marker);
+				};
+			};
+			map.addLayer(markers);
+		};
+
+		// Removes layer to reset for next clicked layer
+		function removeBrewery(){
+			markers.clearLayers();
+		};
+
+		// Displays all breweries with clicked "Show All Locattions" button
+		function displayAll(){
+			for(var i = 0; i < breweryArray.length; i++){
+				var marker = L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
+	    		.bindPopup(breweryArray[i].brewery.name + "<br>"
+		    	+ "<form method='post' action='/list'>" 
+		    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
+		    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
+		    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
+		    	+ "</form>"
+		    	+ "<br>"
+		    	// + "<form method='post' action='/brewery'>"
+		    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
+		    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
+		    	// + "</form>"
+		    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
+		    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
+		    	+ "</a>")
+		    	markers.addLayer(marker);
+		    };
+		    map.addLayer(markers);
 		};
 
 		</script>
@@ -59,7 +122,3 @@
 </div>
 
 <% include footer %>
-
-<!-- 
-</body>
-</html> -->

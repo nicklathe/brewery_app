@@ -66,7 +66,7 @@ li {
 	color: #000;
 }
 
-h1 {
+h2 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
@@ -88,9 +88,6 @@ h5 {
 	height: 300px;
 }
 
-/*.glyphicon {
-	background-color: yellow;
-}*/
 img {
 	position: left;
 }
@@ -106,3 +103,6 @@ img {
 	color: #fff;
 	border: none;
 }
+/*.map-btn:active {
+	border: none;
+}*/

@@ -44,20 +44,34 @@ app.get("*", function(req, res, next){
 app.get("/", function(req, res){
 	var user = req.getUser();
 	request("http://api.brewerydb.com/v2/locations?key=d89bf914be5d33893a9cbe1cdd88556c&locality=seattle", function(err, response, body){
+		// request("http://api.brewerydb.com/v2/locations?key=d89bf914be5d33893a9cbe1cdd88556c&region=Washington", function(err, response, body){
 		res.render("index", {mapData: body, user: user});
 	});
 });
 
-// Get's brewery individual info page. Currently can't access the right info on the ejs side.
+// Old individual brewery page get. Updated is below, and shows beers
+// app.get("/brewery/:id", function(req, res){
+// 	var user = req.getUser();
+// 	var brewId = req.params.id;
+// 	// console.log(brewId);
+// 	request("http://api.brewerydb.com/v2/breweries?key=d89bf914be5d33893a9cbe1cdd88556c&ids=" + brewId, function(err, response, body){
+// 		// console.log(typeof breweryIndiv);
+// 		var breweryIndiv = JSON.parse(body);
+// 		// res.send(breweryIndiv);
+// 		res.render("brewery", {breweryIndiv:breweryIndiv, user:user});
+// 	});
+// });
+
+// Get for brewery page, and lists all beers if avialable
 app.get("/brewery/:id", function(req, res){
 	var user = req.getUser();
 	var brewId = req.params.id;
-	// console.log(brewId);
 	request("http://api.brewerydb.com/v2/breweries?key=d89bf914be5d33893a9cbe1cdd88556c&ids=" + brewId, function(err, response, body){
-		// console.log(typeof breweryIndiv);
 		var breweryIndiv = JSON.parse(body);
-		// res.send(breweryIndiv);
-		res.render("brewery", {breweryIndiv:breweryIndiv, user:user});
+		request("http://api.brewerydb.com/v2/brewery/" + brewId + "/beers?key=d89bf914be5d33893a9cbe1cdd88556c", function(err, response, body){
+			var beerList = JSON.parse(body);
+			res.render("brewery", {breweryIndiv:breweryIndiv, user:user, beerList:beerList});
+		});
 	});
 });
 
