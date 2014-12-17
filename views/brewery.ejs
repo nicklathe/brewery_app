@@ -7,18 +7,42 @@
 	</ol>
 </div>
 
+
 <div id="list-outer"class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 
-<img src="<%= breweryIndiv.data[0].images.medium %>">
-	<h3><%= breweryIndiv.data[0].name %></h3>
+	<% if(breweryIndiv.data[0].images !== undefined){ %>
+	<img src="<%= breweryIndiv.data[0].images.medium %>">
+	<% } %> 
+	<h1><%= breweryIndiv.data[0].name %></h1>
 	<br>
 	<p><%= breweryIndiv.data[0].description %></p>
 	<br>
 	<p>Established: <%= breweryIndiv.data[0].established %></p>
 	<br>
 	<a href="<%= breweryIndiv.data[0].website %>">Website</a>
+	<br>
+
+	<% if(beerList.data !== undefined){ %>
+
+	<h3><%= breweryIndiv.data[0].name %>'s Beer</h3>
+	<br>
+
+		<% for(var i = 0; i < beerList.data.length; i++){ %>
+
+			<% if(beerList.data[i] !== undefined){ %>
+
+	<h4><%= beerList.data[i].name %></h4>
+	<p><%= beerList.data[i].description %></p>
+	<br>
+
+			<% } %>
+
+		<% } %>
+
+	<% } %>
 
 </div>
+
 
 
 <% include footer %>
