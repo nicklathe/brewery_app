@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	background-color: ##F5F5F5;
 }
 
 #wrapper {
@@ -23,14 +24,14 @@ body {
 }
 
 #map {
-	height: 500px;
+	height: 550px;
 	width: 100%;
 	margin: 0;
-	padding-bottom: 50px;
+	/*padding-bottom: 50px;*/
 }
 
 #map-outer {
-	padding-bottom: 50px;
+	/*padding-bottom: 50px;*/
 }
 
 #login-outer {
@@ -80,9 +81,16 @@ h1 {
 	font-weight: 500;
 }
 
-h2 {
-	padding-top: 50px;
+h1.fp-heading {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	padding-top: 100px;
 	padding-bottom: 50px;
+}
+
+h2 {
+/*	padding-top: 50px;
+	padding-bottom: 50px;*/
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
 }
@@ -141,11 +149,11 @@ img.main-pic {
 }
 
 .map-btn-right {
-	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 .map-btn-left {
-	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 a.fav-list {
@@ -204,6 +212,7 @@ h1#fav-list-h1 {
   	color: #fff;
   	font-size: 16px;
   	line-height: 24px;
+  	/*text-align: center;*/
 }
 
 .custom-popup .leaflet-popup-tip {
@@ -212,11 +221,13 @@ h1#fav-list-h1 {
 	border-top: 15px solid #2c3e50;
 }
 
-.btn-add {
-	/*display: inline-block;*/
-	/*float: left;*/
+.btn-group {
+	min-width: 170px;
+	border-radius: 0;
 }
 
-.btn-info {
-	/*float: left;*/
-}
+/*.infoButton {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}*/
+
