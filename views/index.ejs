@@ -7,26 +7,30 @@
 	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 		<div class="text-center">
 			<h2>Find Your Favorite Brewery</h2>
+			<hr>
 		</div>
 		<div class="main-text">
-			<p>Seattle has a long been in the buisiness of brewing beer. Spanning from the early days of the Rainier Brewery which started in the early 1880's, through the 1980's when the micro brewing scene kicked off, to the current day, with over 40 breweries located within the city of Seattle. Lucky for you, there is no sign of slowing down. That means for Seattleites, there is are endless options when it comes to finding a great brewery nearby.</p>
+			<p>Seattle has long been in the buisiness of brewing beer. From the early days of the Rainier Brewery in the 1880's, through the 1980's when the micro brewing scene kicked off, to the current day with over 40 breweries located within the city of Seattle. Lucky for you, there is no sign of slowing down. That means for Seattleites, there is are endless options when it comes to finding a great brewery nearby.</p>
 
 			<p>This app allows you to narrow down your search, get some info on a selected brewery, and save your favorite breweries to you a list so you can remember where you had that fantastic IPA you had one too many of the other night.</p>
+
+			<!-- <img class="main-pic text-center" src="logo2.png"> -->
+			<hr>
 		</div>
 	</div>
 	<div class="fp-bumper"></div>
 	<div id="button-row"class="col-md-12 col-sm-12 text-center">
 		<div class="btn-group" role="group" aria-label="blank">
-		  	<button id="micro" type="button" class="map-btn btn btn-default">Show Micro Breweries</button>
+		  	<button id="micro" type="button" class="map-btn map-btn-left btn btn-default">Show Micro Breweries</button>
 		  	<button id="nano" type="button" class="map-btn btn btn-default">Show Nano Breweries</button>
 		  	<button id="brewpub" type="button" class="map-btn btn btn-default">Show Brew Pubs</button>
-		  	<button id="all" type="button" class="map-btn btn btn-default">Show All Locations</button>	
+		  	<button id="all" type="button" class="map-btn map-btn-right btn btn-default">Show All Locations</button>	
 		</div>	
 	</div>
 
 	<div id="map-outer"class="col-md-12 col-sm-12">
 
-		<div id='map'></div>
+		<div class="custom-popup" id='map'></div>
 
 		<script>
 		var mapData = <%- mapData %>;
@@ -72,15 +76,15 @@
 				    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
 				    	+ "<input type='hidden' name='brewery_id' value='" + breweryArray[i].brewery.id + "'>"
 				    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
-				    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
+				    	+ "<button type='submit' class='btn-add btn btn-primary btn-sm addButton'>Add to List</button>"
 				    	+ "</form>"
-				    	+ "<br>"
+				    	// + "<br>"
 				    	// + "<form method='post' action='/brewery'>"
 				    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
 				    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
 				    	// + "</form>"
 				    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
-				    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
+				    	+ "<button type='submit' class='btn-info btn btn-primary btn-sm infoButton'>More Info</button>"
 				    	+ "</a>")
 				    markers.addLayer(marker);
 				};
