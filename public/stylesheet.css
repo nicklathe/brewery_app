@@ -55,8 +55,16 @@ body {
 
 a.navbar-brand {
 	color: #fff;
-	font-size: 30px;
-	/*font-family: 'Poiret One', cursive;*/
+	font-size: 35px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	padding-top: 20px; 
+}
+
+a#navlink {
+	font-family:'Raleway', sans-serif;
+	font-weight: 300;
+
 }
 
 .breadcrumb {
@@ -67,13 +75,33 @@ li {
 	color: #000;
 }
 
+h1 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
 h2 {
 	padding-top: 50px;
 	padding-bottom: 50px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+h3 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+h4 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
 }
 
 h5 {
 	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 100;
+	padding-left: 250px;
 }
 
 #user-greeting {
@@ -93,6 +121,11 @@ img {
 	position: left;
 }
 
+img.main-pic {
+	height: 300px;
+	width: 350px;
+}
+
 #list-outer {
 	padding-bottom: 100px;
 }
@@ -103,6 +136,16 @@ img {
 	background-color: #000;
 	color: #fff;
 	border: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+}
+
+.map-btn-right {
+	border-top-right-radius: 5px;
+}
+
+.map-btn-left {
+	border-top-left-radius: 5px;
 }
 
 a.fav-list {
@@ -113,5 +156,67 @@ a.fav-list {
 
 h1#fav-list-h1 {
 	padding-bottom: 50px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
 }
 
+.input-top {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-mid-top {
+	border-radius: 0;
+	border-top: none;
+	border-bottom: none;
+}
+
+.input-mid-btm {
+	border-radius: 0;
+	border-bottom: none;
+}
+
+.input-btm {
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.sign-log-btn {
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.log-input-btm {
+	border-top: none;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.custom-popup .leaflet-popup-tip-container {
+  	width: 30px;
+  	height: 15px;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+	background: #2c3e50;
+  	color: #fff;
+  	font-size: 16px;
+  	line-height: 24px;
+}
+
+.custom-popup .leaflet-popup-tip {
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 15px solid #2c3e50;
+}
+
+.btn-add {
+	/*display: inline-block;*/
+	/*float: left;*/
+}
+
+.btn-info {
+	/*float: left;*/
+}

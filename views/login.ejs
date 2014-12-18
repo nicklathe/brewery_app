@@ -3,27 +3,20 @@
 <% include alerts %>
 
 <div id="login-outer" class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-	<br><br>
+	<!-- <br><br> -->
 	<h2>Login</h2>
 	<form class="form" method="post" action="/login">
-		<input type="text" class="form-control" name="email" placeholder="Enter Your Email">
-		<br><br>
-		<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
-		<br><br>
-		<input type="submit" value="Login" class="btn btn-primary">
+		<input type="text" class="input-top form-control" name="email" placeholder="Enter Your Email">
+		<input type="password" class="log-input-btm form-control" name="password" placeholder="Enter Your Password">
+		<input type="submit" value="Login" class="sign-log-btn pull-right btn btn-primary">
 	</form>
-	<br><br>
 	<h2>Sign Up</h2>
 		<form class="form" method="post" action="/signup">
-		<input type="text" class="form-control" name="name" placeholder="Enter Your Name">
-		<br><br>
-		<input type="text" class="form-control" name="email" placeholder="Enter Your Email">
-		<br><br>
-		<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
-		<br><br>
-		<input type="password" class="form-control" name="password2" placeholder="Re-Enter Your Password">
-		<br><br>
-		<input type="submit" value="Sign-Up" class="btn btn-primary">
+		<input type="text" class="input-top form-control" name="name" placeholder="Enter Your Name">
+		<input type="text" class="input-mid-top form-control" name="email" placeholder="Enter Your Email">
+		<input type="password" class="input-mid-btm form-control" name="password" placeholder="Enter Your Password">
+		<input type="password" class="input-btm form-control" name="password2" placeholder="Re-Enter Your Password">
+		<input type="submit" value="Sign-Up" class="sign-log-btn pull-right btn btn-primary">
 		<br><br>
 	</form>
 </div>
