@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(session({
 	secret: "ilovebeerandbreweries",
+	// secret: process.env.session_secret,
 	resave: false,
 	saveUninitialized: true
 }));
@@ -43,8 +44,8 @@ app.get("*", function(req, res, next){
 // Inital request to get all the breweries from brewerydb and render them to the home page
 app.get("/", function(req, res){
 	var user = req.getUser();
-	request("http://api.brewerydb.com/v2/locations?key=d89bf914be5d33893a9cbe1cdd88556c&locality=seattle", function(err, response, body){
-		// request("http://api.brewerydb.com/v2/locations?key=d89bf914be5d33893a9cbe1cdd88556c&region=Washington", function(err, response, body){
+	request("http://api.brewerydb.com/v2/locations?key=" + process.env.brew_db + "&locality=seattle", function(err, response, body){
+
 		res.render("index", {mapData: body, user: user});
 	});
 });
@@ -66,9 +67,9 @@ app.get("/", function(req, res){
 app.get("/brewery/:id", function(req, res){
 	var user = req.getUser();
 	var brewId = req.params.id;
-	request("http://api.brewerydb.com/v2/breweries?key=d89bf914be5d33893a9cbe1cdd88556c&ids=" + brewId, function(err, response, body){
+	request("http://api.brewerydb.com/v2/breweries?key=" + process.env.brew_db + "&ids=" + brewId, function(err, response, body){
 		var breweryIndiv = JSON.parse(body);
-		request("http://api.brewerydb.com/v2/brewery/" + brewId + "/beers?key=d89bf914be5d33893a9cbe1cdd88556c", function(err, response, body){
+		request("http://api.brewerydb.com/v2/brewery/" + brewId + "/beers?key=" + process.env.brew_db, function(err, response, body){
 			var beerList = JSON.parse(body);
 			res.render("brewery", {breweryIndiv:breweryIndiv, user:user, beerList:beerList});
 		});
@@ -78,7 +79,7 @@ app.get("/brewery/:id", function(req, res){
 // Posts breweries to list/db from pop up bubles on map
 app.post("/list", function(req, res){
 	var user = req.getUser();
-	db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, userId: user.id}}).spread(function(savedBrewery, created){
+	db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, brewery_id: req.body.brewery_id, userId: user.id}}).spread(function(savedBrewery, created){
 		if(created){
 			req.flash("success","Added to your list");
 			res.redirect("/");
@@ -104,6 +105,13 @@ app.get("/list", function(req, res){
 		res.redirect("/");
 	};
 });
+
+// //Deletes brewery from My Breweries list, from list and db
+// app.delete("/list", function(req, res){
+// 	db.favorite.destroy({where: {brewery_id: req.body.brewery_id}}).then(function(data){
+// 		res.send({data:data});
+// 	});
+// });
 
 // Get's the login/signup page
 app.get("/login", function(req, res){
@@ -162,16 +170,6 @@ app.get("/logout", function(req, res){
 	delete req.session.user;
 	req.flash("info","You have been logged out");
 	res.redirect("/");
-});
-
-
-// Testing routes below
-
-app.get("/route", function(req, res){
-	var user = req.getUser();
-	request("http://api.brewerydb.com/v2/locations?key=d89bf914be5d33893a9cbe1cdd88556c&locality=seattle", function(err, response, body){
-		res.render("route", {mapData: body, user: user});
-	});
 });
 
 

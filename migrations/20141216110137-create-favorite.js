@@ -11,6 +11,9 @@ module.exports = {
       brewery_name: {
         type: DataTypes.STRING
       },
+      brewery_id: {
+        type: DataTypes.STRING
+      },
       userId: {
         type: DataTypes.INTEGER
       },
