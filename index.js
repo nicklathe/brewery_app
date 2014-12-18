@@ -77,17 +77,37 @@ app.get("/brewery/:id", function(req, res){
 });
 
 // Posts breweries to list/db from pop up bubles on map
+// app.post("/list", function(req, res){
+// 	var user = req.getUser();
+// 	db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, brewery_id: req.body.brewery_id, userId: user.id}}).spread(function(savedBrewery, created){
+// 		if(created){
+// 			req.flash("success","Added to your list");
+// 			res.redirect("/");
+// 		} else {
+// 			req.flash("danger","Brewery already exists in your list");
+// 			res.redirect("/");
+// 		};
+// 	});
+// });
+
+// Testing posts only if user is logged in.
 app.post("/list", function(req, res){
 	var user = req.getUser();
-	db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, brewery_id: req.body.brewery_id, userId: user.id}}).spread(function(savedBrewery, created){
-		if(created){
-			req.flash("success","Added to your list");
+	if(user){
+		db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, brewery_id: req.body.brewery_id, userId: user.id}}).spread(function(savedBrewery, created){
+			if(created){
+				req.flash("success","Added to your list");
+				res.redirect("/");
+			} else {
+				req.flash("danger","Brewery already exists in your list");
+				// res.redirect("/");
+			};
 			res.redirect("/");
-		} else {
-			req.flash("danger","Brewery already exists in your list");
-			res.redirect("/");
-		};
-	});
+		});
+	} else {
+		req.flash("warning","Please login");
+		res.redirect("/");
+	}
 });
 
 // Get's the list/My Breweries page
