@@ -32,7 +32,6 @@
 		var mapData = <%- mapData %>;
 		var breweryArray = mapData.data;
 		L.mapbox.accessToken = 'pk.eyJ1Ijoibmlja2xhdGhlIiwiYSI6InhteXZpY1kifQ.7auBYdWGL5ttVM1kbrn93Q';
-		// L.mapbox.accessToken = process.env.map_token;
 
 		var map = L.mapbox.map('map', 'nicklathe.506fa65a', {
 			scrollWheelZoom: false
@@ -99,19 +98,19 @@
 			for(var i = 0; i < breweryArray.length; i++){
 				var marker = L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
 	    		.bindPopup(breweryArray[i].brewery.name + "<br>"
-		    	+ "<form method='post' action='/list'>" 
-		    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
-		    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
-		    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
-		    	+ "</form>"
-		    	+ "<br>"
-		    	// + "<form method='post' action='/brewery'>"
-		    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
-		    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
-		    	// + "</form>"
-		    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
-		    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
-		    	+ "</a>")
+			    	+ "<form method='post' action='/list'>" 
+			    	+ "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
+			    	// + "<button type='submit' data-name='" + breweryArray[i].brewery + "' class='addButton'>Add to List</button>")
+			    	+ "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
+			    	+ "</form>"
+			    	+ "<br>"
+			    	// + "<form method='post' action='/brewery'>"
+			    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
+			    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
+			    	// + "</form>"
+			    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
+			    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
+			    	+ "</a>")
 		    	markers.addLayer(marker);
 		    };
 		    map.addLayer(markers);
