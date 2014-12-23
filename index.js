@@ -36,10 +36,10 @@ app.get("*", function(req, res, next){
 	next();
 });
 
-// app.get("/header", function(req, res){
-// 	var user = req.getUser();
-// 	res.render("header", {user:user});
-// });
+app.get("/about", function(req, res){
+	var user = req.getUser();
+	res.render("about", {user:user});
+});
 
 // Inital request to get all the breweries from brewerydb and render them to the home page
 app.get("/", function(req, res){

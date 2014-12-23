@@ -13,6 +13,7 @@
 
 <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <body>
 <div id="wrapper">
@@ -40,14 +41,14 @@
       		<% if(user && typeof user !== undefined) { %>
       		<ul class="nav navbar-nav navbar-right">
         		<li><a id="navlink"href="/">Home</a></li>
-        		<!-- <li><a id="navlink"href="/"class="scroll_down">About</a></li> -->
+        		<li><a id="navlink"href="/about">Contact</a></li>
         		<li><a id="navlink"href="/list">My Breweries</a></li>
         		<li><a id="navlink"href="/logout">Logout</a></li>
         	</ul>
         	<% } else { %>
         	<ul class="nav navbar-nav navbar-right">
         		<li><a id="navlink"href="/">Home</a></li>
-        		<!-- <li><a id="navlink"href="/"class="scroll_down">About</a></li> -->
+        		<li><a id="navlink"href="/about">Contact</a></li>
         		<li><a id="navlink"href="/login">Login</a></li>
         		<% } %>
           	</ul>

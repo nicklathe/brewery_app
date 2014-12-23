@@ -222,6 +222,31 @@ h1#fav-list-h1 {
 	border-radius: 0;
 }
 
+i.fa {
+	color: #000;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#about-h1 {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#social-icons {
+	padding-top: 50px;
+}
+
+#portrait {
+	height: 200px;
+	width: 200px;
+	border-radius: 200px;
+}
+
+#about {
+	padding-top: 50px;
+}
+
 @media (max-width: 600px) {
 	
 	#map {
