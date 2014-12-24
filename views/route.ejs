@@ -4,29 +4,11 @@
 <% include alerts %>
 
 <div class="row">
-	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-		<div class="text-center">
-			<h1>Start drinking beer</h1>
-		</div>
-		<div class="main-text">
-			<p>Brewpub infusion secondary fermentation fermentation squares, keg craft beer balthazar. cask conditioning carbonation dry stout bittering hops abbey amber, barleywine! sparge mouthfeel finishing hops terminal gravity scotch ale. hard cider alpha acid primary fermentation bitter. krug mead grainy bung shelf life.</p>
-
-			<p>Double bock/dopplebock bung acid rest primary fermentation yeast bacterial, " sparge mead cask conditioned ale." krug imperial, trappist hoppy dry hopping oxidized. top-fermenting yeast infusion chocolate malt. brewpub ipa infusion specific gravity, mead pitching shelf life. barleywine pitch infusion; noble hops." bottom fermenting yeast sparge caramel malt. bunghole bitter aroma hops abbey barley. original gravity draft (draught) ester gravity copper, racking barrel hops trappist hoppy mouthfeel krug; mouthfeel.</p>
-		</div>
-	</div>
-	<div class="fp-bumper"></div>
-	<div id="button-row"class="col-md-12 col-sm-12 text-center">
-		<div class="btn-group" role="group" aria-label="blank">
-		  	<button id="micro" type="button" class="map-btn btn btn-default">Show Micro Breweries</button>
-		  	<button id="nano" type="button" class="map-btn btn btn-default">Show Nano Breweries</button>
-		  	<button id="brewpub" type="button" class="map-btn btn btn-default">Show Brew Pubs</button>
-		  	<button id="all" type="button" class="map-btn btn btn-default">Show All Locations</button>	
-		</div>	
-	</div>
 
 	<div id="map-outer"class="col-md-12 col-sm-12">
 
 		<div id='map'></div>
+
 
 		<script>
 		var mapData = <%- mapData %>;
@@ -37,6 +19,28 @@
 		var map = L.mapbox.map('map', 'nicklathe.506fa65a', {
 			scrollWheelZoom: false
 		});
+
+		// Trying out routing //
+
+		var pointA = new L.LatLng(47.6670226, -122.3839464);
+		var pointB = new L.LatLng(47.6591056, -122.3651983);
+		var pointC = new L.LatLng(47.6673244, -122.3741648)
+		var pointList = [pointA, pointB, pointC];
+
+		var firstpolyline = new L.polyline(pointList, {
+			color: 'red',
+            weight: 10,
+            opacity: .7,
+            dashArray: '20,15',
+            smoothFactor: 100
+
+		});
+		
+		firstpolyline.addTo(map);
+
+		map.fitBounds(firstpolyline.getBounds());
+
+		//////////////
 
 		$(function(){
 			$(".btn").on("click", function(){
@@ -120,6 +124,41 @@
 		};
 
 		</script>
+	</div>
+
+	<div id="button-row"class="col-md-12 col-sm-12 text-center">
+		<div class="btn-group" role="group" aria-label="blank">
+		  	<button id="micro" type="button" class="map-btn btn btn-default">Show Micro Breweries</button>
+		  	<button id="nano" type="button" class="map-btn btn btn-default">Show Nano Breweries</button>
+		  	<button id="brewpub" type="button" class="map-btn btn btn-default">Show Brew Pubs</button>
+		  	<button id="all" type="button" class="map-btn btn btn-default">Show All Locations</button>	
+		</div>	
+	</div>
+
+	<div id="brew-select-outer" class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+		<select id="route-dropdown" class="form-control">
+			<option>Fremont</option>
+			<option>Peddler</option>
+			<option>Elysian</option>
+			<option>Hales Ales</option>
+			<option>Martime</option>
+		</select>
+
+		<select id="route-dropdown" class="form-control">
+			<option>Fremont</option>
+			<option>Peddler</option>
+			<option>Elysian</option>
+			<option>Hales Ales</option>
+			<option>Martime</option>
+		</select>
+
+		<select id="route-dropdown" class="form-control">
+			<option>Fremont</option>
+			<option>Peddler</option>
+			<option>Elysian</option>
+			<option>Hales Ales</option>
+			<option>Martime</option>
+		</select>
 	</div>
 </div>
 
