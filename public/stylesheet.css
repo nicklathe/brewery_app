@@ -247,6 +247,15 @@ i.fa {
 	padding-top: 50px;
 }
 
+#brew-select-outer {
+	padding-top: 100px;
+	padding-bottom: 200px;
+}
+
+#route-dropdown {
+	padding-bottom: 50px;
+}
+
 @media (max-width: 600px) {
 	
 	#map {

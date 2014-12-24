@@ -45,23 +45,9 @@ app.get("/about", function(req, res){
 app.get("/", function(req, res){
 	var user = req.getUser();
 	request("http://api.brewerydb.com/v2/locations?key=" + process.env.brew_db + "&locality=seattle", function(err, response, body){
-
 		res.render("index", {mapData: body, user: user});
 	});
 });
-
-// Old individual brewery page get. Updated is below, and shows beers
-// app.get("/brewery/:id", function(req, res){
-// 	var user = req.getUser();
-// 	var brewId = req.params.id;
-// 	// console.log(brewId);
-// 	request("http://api.brewerydb.com/v2/breweries?key=d89bf914be5d33893a9cbe1cdd88556c&ids=" + brewId, function(err, response, body){
-// 		// console.log(typeof breweryIndiv);
-// 		var breweryIndiv = JSON.parse(body);
-// 		// res.send(breweryIndiv);
-// 		res.render("brewery", {breweryIndiv:breweryIndiv, user:user});
-// 	});
-// });
 
 // Get for brewery page, and lists all beers if avialable
 app.get("/brewery/:id", function(req, res){
@@ -75,20 +61,6 @@ app.get("/brewery/:id", function(req, res){
 		});
 	});
 });
-
-// Posts breweries to list/db from pop up bubles on map
-// app.post("/list", function(req, res){
-// 	var user = req.getUser();
-// 	db.favorite.findOrCreate({where: {brewery_name: req.body.brewery_name, brewery_id: req.body.brewery_id, userId: user.id}}).spread(function(savedBrewery, created){
-// 		if(created){
-// 			req.flash("success","Added to your list");
-// 			res.redirect("/");
-// 		} else {
-// 			req.flash("danger","Brewery already exists in your list");
-// 			res.redirect("/");
-// 		};
-// 	});
-// });
 
 // Testing posts only if user is logged in.
 app.post("/list", function(req, res){
@@ -117,7 +89,6 @@ app.get("/list", function(req, res){
 		db.user.find({where: {id: user.id}}).then(function(userReturn){
 			db.favorite.findAll({where: {userId: userReturn.id}}).then(function(returnedList){
 				res.render("list", {returnedList:returnedList, user:user});
-				// res.send(returnedList);
 			});
 		});
 	} else {
@@ -153,7 +124,6 @@ app.post("/signup", function(req, res){
 			if(error && Array.isArray(error.errors)){
 				error.errors.forEach(function(errorItem){
 					req.flash("danger", errorItem.message);
-					// res.send(errorItem);
 				});
 			} else {
 				req.flash("danger", "Unknown error");
@@ -162,7 +132,7 @@ app.post("/signup", function(req, res){
 		});
 });
 
-// User login. Currently, doesn't display user name. Is displaying Unknown
+// User login.
 app.post("/login", function(req, res){
 	db.user.find({where: {email: req.body.email}}).then(function(userObj){
 		if(userObj){
@@ -186,10 +156,24 @@ app.post("/login", function(req, res){
 	});
 });
 
+//Get's brewery route page
+app.get("/route", function(req, res){
+	var user = req.getUser();
+	request("http://api.brewerydb.com/v2/locations?key=" + process.env.brew_db + "&locality=seattle", function(err, response, body){
+		res.render("route", {mapData: body, user: user});
+	});
+});
+
+//Logs user out/deletes user session
 app.get("/logout", function(req, res){
 	delete req.session.user;
 	req.flash("info","You have been logged out");
 	res.redirect("/");
+});
+
+//Handles 404 errors 
+app.use(function(req, res, next){
+	res.send(404, "Sorry that page doesn't exist.");
 });
 
 
