@@ -3,15 +3,7 @@ body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	/*background-color: #fff;*/
 	background-color: #E0E0E0;
-	/*background-color: #C7C7C7;	*/
-
-/*	background-color: -webkit-linear-gradient(#C7C7C7, #E0E0E0);
-    background-color: -o-linear-gradient(#C7C7C7, #E0E0E0);
-    background-color: -moz-linear-gradient(#C7C7C7, #E0E0E0;
-    background-color: linear-gradient(#C7C7C7, #E0E0E0);*/
-
 }
 
 #wrapper {
@@ -55,7 +47,6 @@ hr {
 	height: 550px;
 	width: 100%;
 	margin: 0;
-	/*padding-bottom: 50px;*/
 }
 
 #login-outer {
@@ -110,8 +101,6 @@ h1.fp-heading {
 }
 
 h2 {
-/*	padding-top: 50px;
-	padding-bottom: 50px;*/
 	font-family: 'Raleway', sans-serif;
 	font-weight: 500;
 }
@@ -320,7 +309,6 @@ i.fa {
 	}
 
 	.map-btn {
-		/*border-radius: 0;*/
 		width: 70px;
 		font-size: 9px;
 	}
@@ -330,10 +318,13 @@ i.fa {
 	}
 
 	a.navbar-brand {
-		/*vertical-align: 50%;*/
 		padding-top: 15px;
 		padding-left: 20px;
 	}
+
+	img {
+	max-width: 250px;
+}
 
 }
 
