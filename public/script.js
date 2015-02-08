@@ -21,7 +21,7 @@ $(function() {
 			url: "/brewery/" + thisDeleteButton.data("id"),
 			type: "DELETE",
 			success:function(result){
-				thisDeleteButton.closest("li").fadeOut(function(){
+				thisDeleteButton.closest("tr").fadeOut(function(){
 					$(this).remove();
 				});
 			}
