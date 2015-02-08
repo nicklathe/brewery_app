@@ -62,7 +62,11 @@ app.get("/brewery/:id", function(req, res){
 	});
 });
 
+<<<<<<< HEAD
 // Posts only if user is logged in.
+=======
+// Testing posts only if user is logged in.
+>>>>>>> e0d17482e0187c46475f40b8ef51892fc69db13a
 app.post("/list", function(req, res){
 	var user = req.getUser();
 	if(user){
@@ -72,6 +76,10 @@ app.post("/list", function(req, res){
 				res.redirect("/");
 			} else {
 				req.flash("danger","Brewery already exists in your list");
+<<<<<<< HEAD
+=======
+				// res.redirect("/");
+>>>>>>> e0d17482e0187c46475f40b8ef51892fc69db13a
 			};
 			res.redirect("/");
 		});
@@ -96,12 +104,21 @@ app.get("/list", function(req, res){
 	};
 });
 
+<<<<<<< HEAD
 //Deletes brewery from My Breweries list, from list and db
 app.delete("/brewery/:id", function(req, res){
 	db.favorite.destroy({where: {brewery_id: req.params.id}}).then(function(data){
 		res.send({data:data});
 	});
 });
+=======
+// //Deletes brewery from My Breweries list, from list and db
+// app.delete("/list", function(req, res){
+// 	db.favorite.destroy({where: {brewery_id: req.body.brewery_id}}).then(function(data){
+// 		res.send({data:data});
+// 	});
+// });
+>>>>>>> e0d17482e0187c46475f40b8ef51892fc69db13a
 
 // Get's the login/signup page
 app.get("/login", function(req, res){

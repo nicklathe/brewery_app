@@ -1,14 +1,14 @@
 <% include header %>
 
 <div id="list-outer" class="col-md-6 col-sm-6 col-md-offset-4 col-md-offset-4">
-	<h1 id="fav-list-h1"><%= user.name %>'s Favorite Breweries</h1>
+    <h1 id="fav-list-h1"><%= user.name %>'s Favorite Breweries</h1>
 
 <% for(var i = 0; i < returnedList.length; i++) { %>
 
 <!-- <li><a class="fav-list" href="/brewery/<%= returnedList[i].brewery_id%>"><%= returnedList[i].brewery_name %></a></li> -->
 
-	<!-- <h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> - <%= returnedList[i].brewery_name %></h4> -->
-	<li><a class="fav-list" href="/brewery/<%= returnedList[i].brewery_id%>"><%= returnedList[i].brewery_name %></a><button data-id="<%= returnedList[i].brewery_id %>" type="submit" class="btn btn-primary btn-sm  deleteBrewery">Delete</button></li>
+    <!-- <h4><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> - <%= returnedList[i].brewery_name %></h4> -->
+    <li><a class="fav-list" href="/brewery/<%= returnedList[i].brewery_id%>"><%= returnedList[i].brewery_name %></a><button data-id="<%= returnedList[i].brewery_id %>" type="submit" class="btn btn-primary btn-sm  deleteBrewery">Delete</button></li>
 
 
 <% } %>
