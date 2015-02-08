@@ -3,8 +3,8 @@
 
 <% include alerts %>
 
-<div class="row">
-	
+<!-- <div class="row"> -->
+
 	<div id="map-outer"class="col-md-12 col-sm-12">
 
 		<div class="custom-popup" id='map'></div>
@@ -49,12 +49,15 @@
 
 					var marker = L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
 				    .bindPopup(breweryArray[i].brewery.name + "<br>" + "<br>"
-				    	+ "<div class='btn-group'>"
-				    	// + "<form method='post' action='/list'>" 
+				    	// + "<div class='btn-group'>"
+				    	// + "<form method='post' action='/list'>"
 				    	// + "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
 				    	// + "<input type='hidden' name='brewery_id' value='" + breweryArray[i].brewery.id + "'>"
+
+				    	// ajax add below. Not in use because flash alerts don't work
+
 				    	+ "<button type='submit' data-name='" + breweryArray[i].brewery.name + "' data-id='"+ breweryArray[i].brewery.id + "'class='btn btn-primary btn-sm addButton'>Add to List</button>"
-				    
+
 				    	// + "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
 				    	// + "</form>"
 				    	// + "<br>"
@@ -62,9 +65,13 @@
 				    	// + "<input type='hidden' name='id' value='" + breweryArray[i].brewery.id + "'>"
 				    	// + "<button type='submit' class='btn btn-primary btn-sm infoButton'>More info</button>"
 				    	// + "</form>"
+
+				    	// ajax add below. Not in use because flash alerts don't work
+
 				    	+ "<a href='/brewery/" + breweryArray[i].brewery.id + "'>"
 				    	+ "<button type='submit' class='btn btn-primary btn-sm infoButton'>More Info</button>"
 				    	+ "</a>"
+
 				    	+ "</div>")
 				    markers.addLayer(marker);
 				};
@@ -82,11 +89,11 @@
 			for(var i = 0; i < breweryArray.length; i++){
 				var marker = L.marker([breweryArray[i].latitude, breweryArray[i].longitude])
 	    		.bindPopup(breweryArray[i].brewery.name + "<br>"
-	    			+ "<div class='btn-group'>"
-			    	// + "<form method='post' action='/list'>" 
+	    			// + "<div class='btn-group'>"
+			    	// + "<form method='post' action='/list'>"
 			    	// + "<input type='hidden' name='brewery_name' value='" + breweryArray[i].brewery.name + "'>"
 			    	+ "<button type='submit' data-name='" + breweryArray[i].brewery.name + "' data-id='"+ breweryArray[i].brewery.id + "'class='btn btn-primary btn-sm addButton'>Add to List</button>"
-	    			
+
 			    	// + "<button type='submit' class='btn btn-primary btn-sm addButton'>Add to List</button>"
 			    	// + "</form>"
 			    	// + "<br>"
@@ -111,22 +118,22 @@
 		  	<button id="micro" type="button" class="map-btn map-btn-left btn btn-default">Show Micro Breweries</button>
 		  	<button id="nano" type="button" class="map-btn btn btn-default">Show Nano Breweries</button>
 		  	<button id="brewpub" type="button" class="map-btn btn btn-default">Show Brew Pubs</button>
-		  	<button id="all" type="button" class="map-btn map-btn-right btn btn-default">Show All Locations</button>	
-		</div>	
-	</div>
-
-	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-		<div class="text-center">
-			<h1 class="fp-heading">Find Your Favorite Brewery</h1>
-			<hr>
-		</div>
-		<div class="main-text">
-			<p>Seattle has long been in the business of brewing beer. Begining in the 1880's with Rainier Brewing, through the kick off of the micro brewing scene in the 1980's, to the current day with over 30 breweries located within the city of Seattle propper. Lucky for you, there is no sign of slowing down. For Seattleites, there are endless options when it comes to finding a great brewery nearby.</p> 
-
-			<p>This app allows you to narrow down your search, get some info on a specific brewery, and save your favorite breweries so you can remember who brews that fantastic IPA you had one too many of the other night. Create a user account to fully enjoy the full features of this app. Happy drinking!</p>
-			<hr>
+		  	<button id="all" type="button" class="map-btn map-btn-right btn btn-default">Show All Locations</button>
 		</div>
 	</div>
-</div>
+	<!-- <div class="transparent-index col-md-12 col-sm-12"> -->
+		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+			<div class="text-center">
+				<h1 class="fp-heading">Find Your Favorite Brewery</h1>
+				<hr>
+			</div>
+			<div class="main-text">
+				<p>Seattle has long been in the business of brewing beer. Begining in the 1880's with Rainier Brewing, through the kick off of the micro brewing scene in the 1980's, to the current day with over 30 breweries located within the city of Seattle propper. Lucky for you, there is no sign of slowing down. For Seattleites, there are endless options when it comes to finding a great brewery nearby.</p>
+
+				<p>This app allows you to narrow down your search, get some info on a specific brewery, and save your favorite breweries so you can remember who brews that fantastic IPA you had one too many of the other night. Create a user account to fully enjoy the full features of this app. Happy drinking!</p>
+				<hr>
+			</div>
+		</div>
+	<!-- </div> -->
 
 <% include footer %>

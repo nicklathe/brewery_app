@@ -6,11 +6,25 @@ $(function() {
 		$.post("/list", {
 			brewery_name: button.data("name"),
 			brewery_id: button.data("id")
+		}, function(data){
+			// button.remove();
+			button.fadeOut(function(){
+				$this.remove();
+			})
 		});
 	});
 
-	$(".scroll_down").on("click", function(){
-		$("html, body").animate({scrollTop: $(document).height()}, 2000);
-		return false;
+	$(".deleteBrewery").on("click", function(event){
+		event.preventDefault();
+		var thisDeleteButton = $(this);
+		$.ajax({
+			url: "/brewery/" + thisDeleteButton.data("id"),
+			type: "DELETE",
+			success:function(result){
+				thisDeleteButton.closest("li").fadeOut(function(){
+					$(this).remove();
+				});
+			}
+		});
 	});
 });

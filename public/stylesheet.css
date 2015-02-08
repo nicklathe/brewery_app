@@ -2,7 +2,9 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	background-color: ##F5F5F5;
+	width: 100%;
+	background-color: #fff;
+
 }
 
 #wrapper {
@@ -10,17 +12,34 @@ body {
 	position: relative;
 }
 
-.footer {
+/*.footer {
 	width: 100%;
 	height: 50px;
 	position: fixed;
 	bottom: 0;
 	background-color: #000;
+}*/
+
+.footer {
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	bottom: 0;
+	background-color: #1b1b1b;
+    background-image: -moz-linear-gradient(top, #222222, #111111);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+	background-image: -webkit-linear-gradient(top, #222222, #111111);
+	background-image: -o-linear-gradient(top, #222222, #111111);
+	background-image: linear-gradient(to bottom, #222222, #111111);
+	background-repeat: repeat-x;
+	border-color: #252525;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 
 #footer-p {
 	padding-left: 10px;
 	padding-top: 15px;
+	color: #fff;
 }
 
 #map {
@@ -39,23 +58,16 @@ body {
 	margin-top: 0px;
 }
 
-.navbar-default {
-	background-color: #000;
-	margin: 0;
-	height: 100px;
-	border-radius: 0;
-	border: none;
-/*	position: fixed;
-	top: 0;*/
-	width: 100%;
+#wrapper > nav {
+	margin-bottom: 0;
 }
 
 a.navbar-brand {
 	color: #fff;
-	font-size: 35px;
+	font-size: 25px;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 800;
-	padding-top: 20px; 
+	padding-left: 0;
 }
 
 a#navlink {
@@ -64,8 +76,12 @@ a#navlink {
 
 }
 
-.breadcrumb {
-	background-color: #fff;
+#wrapper > nav > div > div.navbar-header > a {
+	color: #fff;
+}
+
+#navbar > ul > li > a {
+	color: #fff;
 }
 
 li {
@@ -108,10 +124,6 @@ h5 {
 	padding-left: 250px;
 }
 
-#user-greeting {
-	padding-left: 20px;
-}
-
 .fp-bumper {
 	padding-top: 100px;
 	padding-bottom: 100px;
@@ -134,14 +146,27 @@ img.main-pic {
 	padding-bottom: 100px;
 }
 
+#map-outer {
+	width: 100%;
+}
+
 .map-btn {
 	width: 200px;
 	border-radius: 0;
-	background-color: #000;
+	/*background-color: #000;*/
 	color: #fff;
 	border: none;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
+	background-color: #1b1b1b;
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
+  background-image: linear-gradient(to bottom, #222222, #111111);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
 }
 
 .map-btn-right {
@@ -205,10 +230,11 @@ h1#fav-list-h1 {
 
 .custom-popup .leaflet-popup-content-wrapper {
 	background: #2c3e50;
-  	color: #fff;
-  	font-size: 16px;
-  	line-height: 24px;
-  	/*text-align: center;*/
+	color: #fff;
+	font-size: 16px;
+	line-height: 24px;
+	width: 100%;
+  	text-align: center;
 }
 
 .custom-popup .leaflet-popup-tip {
@@ -257,13 +283,13 @@ i.fa {
 }
 
 @media (max-width: 600px) {
-	
+
 	#map {
 		height: 300px;
 	}
 
 	a.navbar-brand {
-		font-size: 20px;
+		font-size: 15px;
 		padding-left: 0;
 		padding-top: 5px;
 	}
@@ -271,11 +297,29 @@ i.fa {
 	h1.fp-heading {
 		padding-top: 50px;
 		padding-bottom: 25px;
+		font-style: 50px;
 	}
 
 	p {
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+
+	.main-text {
+		margin-bottom: 200px;
+	}
+
+	.map-btn {
+		border-radius: 0;
+		width: 70px;
+		font-size: 6px;
+	}
+
+	#user-greeting {
+		display: none;
+	}
 }
 
+#list-outer{
+	padding-bottom: 100px;
+}

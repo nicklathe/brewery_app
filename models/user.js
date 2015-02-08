@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: {
           args: [5,20],
-          msg: "Please enter a password between 5 to 20 characters long"
+          msg: "Please enter a password over 5 characters long"
         }
       }
     }

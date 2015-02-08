@@ -1,18 +1,10 @@
 <% include header %>
 
-<div class="col-md-12 col-sm-12">
-	<ol class="breadcrumb">
-		<li><a href="/">Home</a></li>
-		<li class="active">Brewery</li>
-	</ol>
-</div>
-
-
 <div id="list-outer"class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 
 	<% if(breweryIndiv.data[0].images !== undefined){ %>
 	<img src="<%= breweryIndiv.data[0].images.medium %>">
-	<% } %> 
+	<% } %>
 	<h1><%= breweryIndiv.data[0].name %></h1>
 	<br>
 	<p><%= breweryIndiv.data[0].description %></p>
